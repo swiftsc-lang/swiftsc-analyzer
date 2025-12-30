@@ -10,6 +10,6 @@ repository = "https://github.com/swiftsc-lang/swiftsc-analyzer"
 [dependencies]
 anyhow = "1.0"
 thiserror = "1.0"
-swiftsc-frontend = { path = "../swiftsc-compiler/frontend" }
+swiftsc-frontend = { version = "1.0.2-beta", path = "../swiftsc-compiler/frontend" }
 
 [dev-dependencies]
