@@ -1,25 +1,19 @@
-# SwiftSC-Lang Analyzer
+# 🔍 SwiftSC Analyzer
 
-This directory is reserved for advanced static analysis tools.
+![Version](https://img.shields.io/badge/version-1.0.2--beta-blue)
 
-## Current Implementation
+Static analysis and formal verification tools for SwiftSC smart contracts.
 
-Basic semantic analysis and security checks are in:
-- `/swiftsc-compiler/swiftsc-frontend/src/sema/analyzer.rs`
-- `/swiftsc-compiler/swiftsc-frontend/src/sema/security.rs`
+## 🚀 Features
 
-## Features Implemented
+- **Semantic Analysis**: Advanced checks for contract safety and logic.
+- **Formal Verification**: Experimental support for proving contract properties.
+- **Gas Estimation**: Static analysis of gas consumption.
 
-- Type checking
-- Symbol table management
-- Integer overflow detection
-- Uninitialized variable checks
-- Security warnings
+## 🤝 Contributing
 
-## Future Enhancements
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-This directory may contain:
-- Advanced control flow analysis
-- Data flow analysis
-- Taint analysis
-- Formal verification integration
+## 📄 License
+
+MIT
