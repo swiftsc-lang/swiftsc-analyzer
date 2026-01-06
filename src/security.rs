@@ -21,13 +21,21 @@ impl SecurityWarning {
     pub fn message(&self) -> String {
         match self {
             SecurityWarning::PotentialOverflow { operation, .. } => {
-                format!("[{}] Potential Overflow in operation: {}", self.code(), operation)
+                format!(
+                    "[{}] Potential Overflow in operation: {}",
+                    self.code(),
+                    operation
+                )
             }
             SecurityWarning::UninitializedVariable { name, .. } => {
                 format!("[{}] Uninitialized storage variable: {}", self.code(), name)
             }
             SecurityWarning::UncheckedArithmetic { operation, .. } => {
-                format!("[{}] Unchecked arithmetic operation: {}. Consider using SafeMath.", self.code(), operation)
+                format!(
+                    "[{}] Unchecked arithmetic operation: {}. Consider using SafeMath.",
+                    self.code(),
+                    operation
+                )
             }
             SecurityWarning::PotentialReentrancy { message, .. } => {
                 format!("[{}] Potential Reentrancy: {}", self.code(), message)
@@ -88,7 +96,12 @@ impl SecurityAnalyzer {
                         // Using func's body span for now.
                         self.warnings.push(SecurityWarning::UninitializedVariable {
                             name: format!("Storage field '{}'", field),
-                            span: func.body.stmts.first().map(|s| s.span).unwrap_or(Span::new(1, 1)),
+                            span: func
+                                .body
+                                .stmts
+                                .first()
+                                .map(|s| s.span)
+                                .unwrap_or(Span::new(1, 1)),
                         });
                     }
                 }
@@ -159,7 +172,9 @@ impl SecurityAnalyzer {
                 self.analyze_expression(condition);
                 self.analyze_block(body);
             }
-            StatementKind::For { start, end, body, .. } => {
+            StatementKind::For {
+                start, end, body, ..
+            } => {
                 self.analyze_expression(start);
                 self.analyze_expression(end);
                 self.analyze_block(body);
@@ -176,7 +191,9 @@ impl SecurityAnalyzer {
                         if let ExpressionKind::Identifier(name) = &obj.kind {
                             if name == "self" {
                                 self.warnings.push(SecurityWarning::PotentialReentrancy {
-                                    message: "Detected state modification after potential external call".to_string(),
+                                    message:
+                                        "Detected state modification after potential external call"
+                                            .to_string(),
                                     span: expr.span,
                                 });
                             }
@@ -186,7 +203,7 @@ impl SecurityAnalyzer {
 
                 match op {
                     BinaryOp::Add | BinaryOp::Sub | BinaryOp::Mul => {
-                        let is_safe_context = self.current_function.as_ref().map_or(false, |name| {
+                        let is_safe_context = self.current_function.as_ref().is_some_and(|name| {
                             name.starts_with("checked_") || name.starts_with("safe_")
                         });
 
