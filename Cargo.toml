@@ -1,6 +1,6 @@
 [package]
 name = "swiftsc-analyzer"
-version = "1.0.3-beta"
+version = "1.0.3"
 edition = "2021"
 authors = ["SwiftSC-Lang Contributors"]
 description = "Static analysis tools for SwiftSC-Lang"
@@ -10,6 +10,6 @@ repository = "https://github.com/swiftsc-lang/swiftsc-analyzer"
 [dependencies]
 anyhow = "1.0"
 thiserror = "1.0"
-swiftsc-frontend = { version = "1.0.3-beta", path = "../swiftsc-compiler/frontend" }
+swiftsc-frontend = { version = "1.0.3", path = "../swiftsc-compiler/frontend" }
 
 [dev-dependencies]
