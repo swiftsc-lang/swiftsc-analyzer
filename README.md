@@ -1,6 +1,6 @@
 # 🔍 SwiftSC Analyzer
 
-![Version](https://img.shields.io/badge/version-1.0.3--beta-blue)
+![Version](https://img.shields.io/badge/version-1.0.3-blue)
 
 Static analysis and formal verification tools for SwiftSC smart contracts.
 
